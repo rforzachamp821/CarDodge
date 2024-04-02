@@ -5,6 +5,8 @@ A fun little terminal-based car-dodging game made for Windows, and based on the 
 
 CarDodge is a game of reaction, focus and even a test of how fast you can spam a keyboard key. The aim of the game is to dodge as many suicidal Enemy Cars as you can. Each car you dodge, you get a point. 
 
+There are levels in the game during gameplay, as well. When a specific number of points are reached, the level goes up. The game moves faster as a result, and one will need to react faster to progress further and further into the round. The border colours will change to remind you about your level increase, so you don't have to look away from your gameplay and crash as a result.
+
 There are multiple cars to choose from, pickable from a stylish, easy-to-navigate menu. Pick the default KartCar if you're just starting out, though fancy feeling like a race driver? In that case, the GT Speed car or the XtraAero car may just be the best picks for you.
 
 When you crash into an Enemy Car, you lose the game. The game loss screen displays the time elapsed each session, score, level, etc.
@@ -48,4 +50,4 @@ Car Dodge is an open-source project, licensed under the MIT license. If you want
 
 If you find any issues in the game, please report them under 'Issues'. It would be gladly appreciated!
 
-Thank you for reading. Enjoy the game!
+Thank you for reading. Enjoy the game! :)
