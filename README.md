@@ -19,7 +19,7 @@ Fancy competing with friends, no matter where they are? Well, CarDodge is a stan
 
 CarDodge requires a 120x30 cell terminal window to run. Anything less than that, and the game will report errors.
 
-You can use any terminal to run this game, provided it's running under Windows, supports the WIN32 Console API, and optionally supports ANSI VT Sequences.
+CarDodge should work on any terminal to run this game, provided it's running under Windows, supports the WIN32 Console API, and optionally supports ANSI VT Sequences.
 
 Windows 11 and 10 are supported, both on the Windows Terminal OpenConsole.exe and ConHost.exe. The game should work under Windows 8.1, 8 and 7, however support is under a lower priority.
 
