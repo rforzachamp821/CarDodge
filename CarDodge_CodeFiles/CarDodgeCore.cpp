@@ -20,8 +20,8 @@ private:
 		CONSOLE_SCREEN_BUFFER_INFO csbiTest;
 		GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbiTest);
 		nSessionConsoleHeight = csbiTest.srWindow.Bottom - csbiTest.srWindow.Top;
-		if (nSessionConsoleHeight < 30) {
-			nSessionConsoleHeight = 30;
+		if (nSessionConsoleHeight < 29) {
+			nSessionConsoleHeight = 29;
 		}
 
 		// Initialise random engine
@@ -114,14 +114,14 @@ protected:
 	//
 	void RenderCar(CarInfo ciCarToRender) {
 		// Set starting point
-		SetCursorPosition(ciCarToRender.bottomLeft.X, ciCarToRender.bottomLeft.Y - 4);
+		SetCursorPosition(ciCarToRender.bottomLeft.X, ciCarToRender.bottomLeft.Y - 3);
 
 		// Render all 4 rows
 		for (int i = 0; i < 4; i++) {
 			// Render car character on screen
 			std::cout.write(ciCarToRender.CarStyle[i].data(), 4);
 			// Move to next position down for render
-			SetCursorPosition(ciCarToRender.bottomLeft.X, ciCarToRender.bottomLeft.Y + (i - 3));
+			if (i < 3) SetCursorPosition(ciCarToRender.bottomLeft.X, ciCarToRender.bottomLeft.Y + (i - 2));
 		}
 
 		return;
@@ -131,14 +131,14 @@ protected:
 	//
 	void EraseCar(CarInfo ciCarToErase) {
 		// Set starting point
-		SetCursorPosition(ciCarToErase.bottomLeft.X, ciCarToErase.bottomLeft.Y - 4);
+		SetCursorPosition(ciCarToErase.bottomLeft.X, ciCarToErase.bottomLeft.Y - 3);
 
 		// Erase all 4 rows
 		for (int i = 0; i < 4; i++) {
 			// 4 because cars are 4 cells in width
 			std::cout.write("    ", 4);
 			// Move to next position down for erase
-			SetCursorPosition(ciCarToErase.bottomLeft.X, ciCarToErase.bottomLeft.Y + (i - 3));
+			if (i < 3) SetCursorPosition(ciCarToErase.bottomLeft.X, ciCarToErase.bottomLeft.Y + (i - 2));
 		}
 
 		return;
@@ -159,6 +159,7 @@ protected:
 
 		colour(sColourGlobal, sColourGlobalBack);
 		cls(); // Set colours to whole screen, clear for gameplay
+		SetCursorPosition(0, 0); // Ensure that the cursor position is at the top left of terminal
 
 		// Set border colours for CarDodgeMain::UpdatePanelInfo()
 		sBorderColourFore = sSetBorderColourFore;
@@ -167,20 +168,18 @@ protected:
 		colour(sSetBorderColourFore, sSetBorderColourBack);
 
 		// 1. Draw left side border
-		for (short int i = 0; i < nSessionConsoleHeight; i++) {
+		for (short int i = 0; i <= nSessionConsoleHeight; i++) {
 			// Repeat creation of sides with std::string buffer
 			std::cout << std::string(nLeftBorderWidth - 1, ' ') << '\xb2';
-			if (i < (nSessionConsoleHeight - 1)) std::cout << '\n';
+			if (i < nSessionConsoleHeight) std::cout << '\n';
 		}
 
 		// 2. Draw right side border
-		for (short int i = 0; i < nSessionConsoleHeight; i++) {
+		for (short int i = 0; i <= nSessionConsoleHeight; i++) {
 			// Repeat creation of sides with std::string buffer
-			COORD placement;
-			placement = { (SHORT)(nScreenWidth - nRightBorderWidth), i }; // 25 is width of information pane
-			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), placement);
+			SetCursorPosition(nScreenWidth - nRightBorderWidth, i); // 25 is width of information pane
 			std::cout << '\xb2' << std::string(nRightBorderWidth - 1, ' ');
-			if (i < (nSessionConsoleHeight - 1)) std::cout << '\n';
+			if (i < nSessionConsoleHeight) std::cout << '\n';
 
 		}
 
@@ -227,7 +226,7 @@ protected:
 
 	// RenderNewEnemyCar
 	void RenderNewEnemyCar() {
-		static std::uniform_int_distribution<> Dist(nLeftBorderWidth, nScreenWidth - nRightBorderWidth - 4);
+		static std::uniform_int_distribution<short int> Dist(nLeftBorderWidth, nScreenWidth - nRightBorderWidth - 4);
 
 		// Too many rendered enemy cars at once
 		if (nNumOfCurrentRenderedEnemyCars > 128) return;
@@ -237,18 +236,15 @@ protected:
 		// Get random x co-ord for enemy car
 		short int nRandomXCoord = Dist(RandEngine); // 4 because enemy cars are 4 chars in width
 
-		// Set random enemy car position
-		SetCursorPosition(nRandomXCoord, 0);
-
 		// Set co-ords of this enemy car (the enemy car Y co-ordinate can be used as an identifier)
 		EnemyCars[nEnemyCarIndex].bInUse = true;
-		EnemyCars[nEnemyCarIndex].bottomLeft = { nRandomXCoord, 4 };
+		EnemyCars[nEnemyCarIndex].bottomLeft = { nRandomXCoord, 3 };
 		nRandomXCoord += 4;
-		EnemyCars[nEnemyCarIndex].bottomRight = { nRandomXCoord, 4 };
+		EnemyCars[nEnemyCarIndex].bottomRight = { nRandomXCoord, 3 };
 
 		// Render the new car now
 		RenderCar(EnemyCars[nEnemyCarIndex]);
-
+		
 		// Finally, increment the number of currently rendered enemy cars
 		nNumOfCurrentRenderedEnemyCars++;
 	}

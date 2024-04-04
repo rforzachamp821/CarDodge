@@ -726,7 +726,7 @@ public:
 		}
 		SetCursorPosition(nDirectionsTextLeftColumn - 9, 11);
 		std::cout << "TTTTTTTT";
-		ciMainMenuUserCar.bottomLeft = { (short)(nDirectionsTextLeftColumn - 7), 10 };
+		ciMainMenuUserCar.bottomLeft = { (short)(nDirectionsTextLeftColumn - 7), 9 };
 		RenderCar(ciMainMenuUserCar);
 
 		// Set car style
@@ -743,7 +743,7 @@ public:
 		}
 		SetCursorPosition(nDirectionsTextRightColumn + 2, 11);
 		std::cout << "TTTTTTTT";
-		ciMainMenuUserCar.bottomLeft = { (short)(nDirectionsTextRightColumn + 4), 10 };
+		ciMainMenuUserCar.bottomLeft = { (short)(nDirectionsTextRightColumn + 4), 9 };
 		RenderCar(ciMainMenuUserCar);
 
 		// Reset colour

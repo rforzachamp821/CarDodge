@@ -142,16 +142,14 @@ int GetWindowWidthInChars() {
 //
 void RenderCar(CarInfo ciCarToRender) {
 	// Set starting point
-	SetCursorPosition(ciCarToRender.bottomLeft.X, ciCarToRender.bottomLeft.Y - 4);
+	SetCursorPosition(ciCarToRender.bottomLeft.X, ciCarToRender.bottomLeft.Y - 3);
 
 	// Render all 4 rows
-	for (size_t i = 0; i < 4; i++) {
-		for (size_t j = 0; j < 4; j++) {
-			// Render car character on screen
-			std::cout << ciCarToRender.CarStyle[i][j];
-		}
+	for (int i = 0; i < 4; i++) {
+		// Render car character on screen
+		std::cout.write(ciCarToRender.CarStyle[i].data(), 4);
 		// Move to next position down for render
-		SetCursorPosition(ciCarToRender.bottomLeft.X, ciCarToRender.bottomLeft.Y + (i - 3));
+		if (i < 3) SetCursorPosition(ciCarToRender.bottomLeft.X, ciCarToRender.bottomLeft.Y + (i - 2));
 	}
 
 	return;
@@ -207,22 +205,22 @@ inline void RenderMainMenuCars() {
 
 	// Render annotations for the cars on both sides of the main menu
 	colour(LGRN, sMenuColourBack);
-	SetCursorPosition(nDirectionsTextRightColumn + 9, 12);
-	std::cout << "||";
 	SetCursorPosition(nDirectionsTextRightColumn + 9, 13);
+	std::cout << "||";
+	SetCursorPosition(nDirectionsTextRightColumn + 9, 14);
 	std::cout << "VV";
 
-	SetCursorPosition(nDirectionsTextRightColumn + 4, 7);
-	std::cout << "^^";
 	SetCursorPosition(nDirectionsTextRightColumn + 4, 8);
+	std::cout << "^^";
+	SetCursorPosition(nDirectionsTextRightColumn + 4, 9);
 	std::cout << "||";
 
 	colour(LMAG, sMenuColourBack);
-	SetCursorPosition(nDirectionsTextLeftColumn, 8);
+	SetCursorPosition(nDirectionsTextLeftColumn, 9);
 	std::cout << "\\/";
-	SetCursorPosition(nDirectionsTextLeftColumn, 10);
+	SetCursorPosition(nDirectionsTextLeftColumn, 11);
 	std::cout << "/\\";
-	SetCursorPosition(nDirectionsTextLeftColumn - 6, 9);
+	SetCursorPosition(nDirectionsTextLeftColumn - 6, 10);
 	std::cout << "<-- CRASH";
 
 	// Set colours back to normal

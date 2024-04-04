@@ -16,8 +16,8 @@
 # Mono auto generated files
 mono_crash.*
 
-# CarDodge High Scores file - for the user only
-HighScores.dat
+# CarDodge High Score file - for the user only
+HighScore.dat
 
 # Build results
 [Dd]ebug/
