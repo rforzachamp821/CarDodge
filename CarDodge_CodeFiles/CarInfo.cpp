@@ -36,7 +36,7 @@ void ResetCarInfoObject(CarInfo* ObjToReset) {
 
 // CarStyles - structure containing the different styles that a car can have, with names.
 struct CarStyles {
-	const std::array<std::array<char, 4>, 4> EnemyCar = { '\xb2', 'T', 'T', '\xb2', '|', '0', '0', '|', '\xb2', '0', '0', '\xb2', ']', '|', '|', '[' };
+	const std::array<std::array<char, 4>, 4> EnemyCar = { '\xb2', 'T', 'T', '\xb2', '|', '0', '0', '|', '\xb2', '0', '0', '\xb2', 'x', '|', '|', 'x' };
 	const std::array<std::array<char, 4>, 4> UserCarDefault = { '=','|','|','=','0','=','=','0','|',':',':','|','0','=','=','0' };
 	const std::array<std::array<char, 4>, 4> HoverRocket = { '/','T','T','\\','|','_','_','|','|',' ',' ','|','/','\\','/','\\' };
 	const std::array<std::array<char, 4>, 4> TheSweeper = { '\\','=','=','/','0','=','=','0','|','X','X','|','0','=','=','0' };

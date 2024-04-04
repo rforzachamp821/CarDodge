@@ -1191,7 +1191,7 @@ bool SetWindowTitle(std::string sTitle) {
 // Clear screen function (Flushes whole screen buffer)
 void cls() {
 
-	// Using ANSI escape codes to clear the screen is a lot faster and cross-platform
+	// Using ANSI escape codes to clear the screen is a lot neater and cross-platform
 	if (bAnsiVTSequences == true) {
 		std::cout << "\033c"; // fully clear the scrollback buffer
 		// As everything was reset, set everything back to normal
@@ -1520,6 +1520,7 @@ bool EnableVTMode()
 
 	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
 	dwMode |= ENABLE_WRAP_AT_EOL_OUTPUT;
+
 	if (!SetConsoleMode(hOut, dwMode))
 	{
 		return false;
