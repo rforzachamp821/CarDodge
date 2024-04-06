@@ -51,6 +51,7 @@ protected:
 		int nPromptLeftPaddingWidth = 0;
 		std::vector<std::string> vsOptionIndicatorColours{};
 		CONSOLE_SCREEN_BUFFER_INFO csbiOptionSelect;
+		GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbiOptionSelect);
 
 		// Check if this function is meant to be used
 		if (bUseNewOptionSelect == true) {
@@ -68,7 +69,6 @@ protected:
 				}
 			}
 			// Calculate padding width
-			GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbiOptionSelect);
 			nOptionsLeftPaddingWidth = ((csbiOptionSelect.srWindow.Right - csbiOptionSelect.srWindow.Left) - (nLargestOptionLength + 3)) / 2; // +3 because of the "[x] " that is appended to each option
 		}
 
