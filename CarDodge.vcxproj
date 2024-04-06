@@ -135,12 +135,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CarDodge.cpp" />
-    <ClCompile Include="RyRyEncryptionAlgorithm\RyRyEncrypt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CarDodge_Definitions\Definitions.h" />
     <ClInclude Include="CarDodge_Definitions\ZeeTerminalCoreLib.h" />
-    <ClInclude Include="RyRyEncryptionAlgorithm\RyRyEncrypt.h" />
+    <ClInclude Include="RyRyCryptor\RyRyCryptor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

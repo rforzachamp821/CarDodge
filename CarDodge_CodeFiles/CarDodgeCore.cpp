@@ -1,7 +1,6 @@
 //
 // CarDodgeCore.cpp - Houses the CarDodgeCore class.
 //
-#include "RyRyEncryptionAlgorithm\RyRyEncrypt.h"
 
 CarInfo EnemyCars[128];
 CarInfo UserCar;
@@ -369,7 +368,7 @@ protected:
 		HighScoreFileIn.close();
 
 		// Decrypt data
-		RyRyEncrypt HighScoreDecryptor;
+		RyRyCryptor HighScoreDecryptor;
 		std::string sDecryptedData = HighScoreDecryptor.DecryptString(sBuffer, nHighScoreKey1, nHighScoreKey2);
 
 		// Check for errors in decryption
@@ -395,7 +394,7 @@ protected:
 	//
 	bool UpdateHighScoreInFile() {
 		// Encrypt high score and put into string
-		RyRyEncrypt HighScoreEncryptor;
+		RyRyCryptor HighScoreEncryptor;
 		std::string sEncryptedHighScore = HighScoreEncryptor.EncryptString(std::to_string(static_cast<long double>(nCurrentPointsHighScore)), nHighScoreKey1, nHighScoreKey2);
 
 		// Open file from fresh in binary mode

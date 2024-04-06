@@ -18,9 +18,6 @@
     <ClCompile Include="CarDodge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RyRyEncryptionAlgorithm\RyRyEncrypt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CarDodge_Definitions\Definitions.h">
@@ -29,7 +26,7 @@
     <ClInclude Include="CarDodge_Definitions\ZeeTerminalCoreLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RyRyEncryptionAlgorithm\RyRyEncrypt.h">
+    <ClInclude Include="RyRyCryptor\RyRyCryptor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

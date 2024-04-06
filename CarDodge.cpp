@@ -4,7 +4,7 @@
 #include <thread>
 #include "CarDodge_Definitions\Definitions.h"
 #include "CarDodge_Definitions\ZeeTerminalCoreLib.h"
-#include "RyRyEncryptionAlgorithm/RyRyEncrypt.h"
+#include "RyRyCryptor/RyRyCryptor.h"
 #include <Windows.h>
 #include <iomanip>
 #include <fstream>
@@ -12,6 +12,8 @@
 #include "CarDodge_CodeFiles\OptionSelectEngine.cpp"
 #include "CarDodge_CodeFiles\CarDodgeCore.cpp"
 #include "CarDodge_CodeFiles\CarDodgeMain.cpp"
+
+#pragma comment(lib, "RyRyCryptor/RyRyCryptor.lib")
 
 extern CarInfo EnemyCars[128];
 extern CarInfo UserCar;
