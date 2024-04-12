@@ -2,18 +2,24 @@
 #include <array>
 #include <chrono>
 #include <thread>
-#include "CarDodge_Definitions\Definitions.h"
-#include "CarDodge_Definitions\ZeeTerminalCoreLib.h"
+#include "CarDodge_Definitions\ZTConstDefinitions.h"
+#include "CarDodge_Definitions/ZTFormattingDefinitions.h"
+#include "CarDodge_Definitions\ZeeTerminalCore.h"
 #include "RyRyCryptor/RyRyCryptor.h"
 #include <Windows.h>
 #include <iomanip>
 #include <fstream>
-#include "CarDodge_CodeFiles\CarInfo.cpp"
+#include "CarDodge_CodeFiles\CarInfo\CarInfo.h"
 #include "CarDodge_CodeFiles\OptionSelectEngine.cpp"
-#include "CarDodge_CodeFiles\CarDodgeCore.cpp"
-#include "CarDodge_CodeFiles\CarDodgeMain.cpp"
+#include "CarDodge_CodeFiles\CarDodgeCore\CarDodgeCore.h"
+#include "CarDodge_CodeFiles\CarDodgeMain\CarDodgeMain.h"
 
-#pragma comment(lib, "RyRyCryptor/RyRyCryptor.lib")
+// Debug/release RyRyCryptor libs
+#ifdef _DEBUG
+#pragma comment(lib, "RyRyCryptor/Debug/RyRyCryptor.lib")
+#else
+#pragma comment(lib, "RyRyCryptor/Release/RyRyCryptor.lib")
+#endif // _DEBUG
 
 extern CarInfo EnemyCars[128];
 extern CarInfo UserCar;
@@ -105,7 +111,7 @@ void InitialiseCarDodge()
 	UserCar.CarStyle = Style.UserCarDefault;
 
 	// Set window title
-	SetWindowTitle("Car Dodge v0.5.0");
+	SetWindowTitle("Car Dodge v0.6.0");
 
 	// Menu screen colours
 	colour(sMenuColourFore, sMenuColourBack);

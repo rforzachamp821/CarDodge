@@ -2,10 +2,8 @@
 // OptionSelectEngine.cpp - Contains everything to do with the OptionSelect engine, including its class.
 //
 
-std::string NumberToColour(int);
-
-extern bool bAnsiVTSequences;
-bool bUseNewOptionSelect = true;
+#include "../CarDodge_Definitions/ZeeTerminalCore.h"
+#include <conio.h>
 
 //
 // ZT OptionSelectEngine - Class for OptionSelect function, allows for easy debugging too.
@@ -81,7 +79,7 @@ protected:
 		// Initialise option indicator colour vector
 		for (int i = 0; i < nSizeOfOptions; i++) {
 			// Calculate another random colour
-			vsOptionIndicatorColours.push_back(NumberToColour(RandNum(16, 1)));
+			vsOptionIndicatorColours.push_back(colconv::NumberToColour(RandNum(16, 1)));
 		}
 
 		// Output a newline to prevent errors with overwriting cells of text
@@ -144,7 +142,7 @@ public:
 	OptionSelectEngine() {
 		static int nStaticID = 10000;
 		// Wrap-around to prevent overflow
-		if (nStaticID >= std::numeric_limits<int>::max() - 1) nStaticID = 10000;
+		if (nStaticID >= (std::numeric_limits<int>::max)() - 1) nStaticID = 10000;
 		nObjectID = ++nStaticID;
 
 		// Display only when verbose messages are turned on
@@ -233,7 +231,7 @@ public:
 		// Initialise option indicator colour vector
 		for (int i = 0; i < nSizeOfOptions; i++) {
 			// Calculate another random colour
-			sOptionIndicatorColours.push_back(NumberToColour(RandNum(16, 1)));
+			sOptionIndicatorColours.push_back(colconv::NumberToColour(RandNum(16, 1)));
 		}
 		 
 		// Output a newline to prevent errors with overwriting cells of text

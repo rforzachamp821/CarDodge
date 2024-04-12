@@ -57,7 +57,7 @@ public:
 	static constexpr int N_FAILED_READING = 4;
 	static constexpr int N_FAILED_WRITING = 5;
 	static constexpr int N_INCORRECT_KEYS = 6;
-	static constexpr int N_UNKNOWN_ERROR = std::numeric_limits<int>::max();
+	static constexpr int N_UNKNOWN_ERROR = (std::numeric_limits<int>::max)();
 
 
 	// GetErrorLevel - Gets the value of the Error Level, which indicates the error code of the last function that was executed.
