@@ -109,6 +109,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,13 +135,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\ZeeTerminal\ZeeTerminal\Core\ZTFormattingDefinitions.cpp" />
     <ClCompile Include="CarDodge.cpp" />
-    <ClCompile Include="RyRyEncryptionAlgorithm\RyRyEncrypt.cpp" />
+    <ClCompile Include="CarDodge_CodeFiles\CarDodgeCore\CarDodgeCore.cpp" />
+    <ClCompile Include="CarDodge_CodeFiles\CarDodgeMain\CarDodgeMain.cpp" />
+    <ClCompile Include="CarDodge_CodeFiles\CarInfo\CarInfo.cpp" />
+    <ClCompile Include="CarDodge_CodeFiles\OptionSelectEngine\OptionSelectEngine.cpp" />
+    <ClCompile Include="CarDodge_Definitions\ColourConv.cpp" />
+    <ClCompile Include="CarDodge_Definitions\ZeeTerminalCore.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\ZeeTerminal\ZeeTerminal\Core\ZTFormattingDefinitions.h" />
+    <ClInclude Include="CarDodge_CodeFiles\CarDodgeCore\CarDodgeCore.h" />
+    <ClInclude Include="CarDodge_CodeFiles\CarDodgeMain\CarDodgeMain.h" />
+    <ClInclude Include="CarDodge_CodeFiles\CarInfo\CarInfo.h" />
+    <ClInclude Include="CarDodge_CodeFiles\OptionSelectEngine\OptionSelectEngine.h" />
     <ClInclude Include="CarDodge_Definitions\Definitions.h" />
+    <ClInclude Include="CarDodge_Definitions\ZeeTerminalCore.h" />
     <ClInclude Include="CarDodge_Definitions\ZeeTerminalCoreLib.h" />
-    <ClInclude Include="RyRyEncryptionAlgorithm\RyRyEncrypt.h" />
+    <ClInclude Include="RyRyCryptor\RyRyCryptor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

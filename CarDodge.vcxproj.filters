@@ -18,7 +18,25 @@
     <ClCompile Include="CarDodge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RyRyEncryptionAlgorithm\RyRyEncrypt.cpp">
+    <ClCompile Include="CarDodge_CodeFiles\CarDodgeCore\CarDodgeCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CarDodge_CodeFiles\CarDodgeMain\CarDodgeMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CarDodge_CodeFiles\CarInfo\CarInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ZeeTerminal\ZeeTerminal\Core\ZTFormattingDefinitions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CarDodge_Definitions\ZeeTerminalCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CarDodge_Definitions\ColourConv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CarDodge_CodeFiles\OptionSelectEngine\OptionSelectEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +47,25 @@
     <ClInclude Include="CarDodge_Definitions\ZeeTerminalCoreLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RyRyEncryptionAlgorithm\RyRyEncrypt.h">
+    <ClInclude Include="RyRyCryptor\RyRyCryptor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CarDodge_CodeFiles\CarDodgeCore\CarDodgeCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CarDodge_CodeFiles\CarDodgeMain\CarDodgeMain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CarDodge_CodeFiles\CarInfo\CarInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ZeeTerminal\ZeeTerminal\Core\ZTFormattingDefinitions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CarDodge_Definitions\ZeeTerminalCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CarDodge_CodeFiles\OptionSelectEngine\OptionSelectEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
