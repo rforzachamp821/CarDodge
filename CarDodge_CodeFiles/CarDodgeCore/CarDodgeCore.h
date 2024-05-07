@@ -5,8 +5,8 @@
 #include <iostream>
 #include <limits>
 #include <random>
-#include "../../CarDodge_Definitions/ZTConstDefinitions.h"
 #include "../../CarDodge_Definitions/ZTFormattingDefinitions.h"
+#include "../CarInfo/CarInfo.h"
 
 extern CarInfo EnemyCars[128];
 extern CarInfo UserCar;
@@ -37,7 +37,7 @@ private:
 	uint64_t nHighScoreKey2 = 8452904164671;
 
 	// High score file name
-	static constexpr char sHighScoreFileName[] = "HighScore.dat";
+	static constexpr char sHighScoreFileName[] = "GameHighScores.dat";
 
 protected:
 

@@ -9,8 +9,9 @@
 #include <Windows.h>
 #include <iomanip>
 #include <fstream>
+#include <conio.h>
 #include "CarDodge_CodeFiles\CarInfo\CarInfo.h"
-#include "CarDodge_CodeFiles\OptionSelectEngine.cpp"
+#include "CarDodge_CodeFiles\OptionSelectEngine\OptionSelectEngine.h"
 #include "CarDodge_CodeFiles\CarDodgeCore\CarDodgeCore.h"
 #include "CarDodge_CodeFiles\CarDodgeMain\CarDodgeMain.h"
 

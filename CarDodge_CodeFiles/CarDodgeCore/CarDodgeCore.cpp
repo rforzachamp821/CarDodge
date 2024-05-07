@@ -5,9 +5,9 @@
 #include <random>
 #include <chrono>
 #include <fstream>
-#include "../../CarDodge_Definitions/ZTConstDefinitions.h"
-#include "../../CarDodge_Definitions/ZTFormattingDefinitions.h"
 #include "../../CarDodge_Definitions/ZeeTerminalCore.h"
+#include "../../CarDodge_Definitions/ZTFormattingDefinitions.h"
+
 #include "../../RyRyCryptor/RyRyCryptor.h"
 #include "../CarInfo/CarInfo.h"
 #include "CarDodgeCore.h"
@@ -121,7 +121,7 @@ void CarDodgeCore::RenderBorders(std::string sSetBorderColourFore, std::string s
 	// 2. Draw right side border
 	for (short int i = 0; i <= nSessionConsoleHeight; i++) {
 		// Repeat creation of sides with std::string buffer
-		SetCursorPosition(nScreenWidth - nRightBorderWidth, i); // 25 is width of information pane
+		SetCursorPosition(nScreenWidth - nRightBorderWidth, i);
 		std::cout << '\xb2' << std::string(nRightBorderWidth - 1, ' ');
 		if (i < nSessionConsoleHeight) std::cout << '\n';
 
@@ -134,16 +134,16 @@ void CarDodgeCore::RenderBorders(std::string sSetBorderColourFore, std::string s
 
 // MoveUserCarLeft
 void CarDodgeCore::MoveUserCarLeft() {
-	// Check if user car is already at the left border
-	if (UserCar.bottomLeft.X <= nLeftBorderWidth) {
+	// Check if user car is already at the left border, with respect to car turning speed
+	if (UserCar.bottomLeft.X - nCarDodgeCarTurningSpeed < nLeftBorderWidth) {
 		return;
 	}
 
 	EraseCar(UserCar);
 
-	// Move car left by 2
-	UserCar.bottomLeft.X -= 2;
-	UserCar.bottomRight.X -= 2;
+	// Move car left by nCarDodgeCarTurningSpeed
+	UserCar.bottomLeft.X -= nCarDodgeCarTurningSpeed;
+	UserCar.bottomRight.X -= nCarDodgeCarTurningSpeed;
 
 	RenderCar(UserCar);
 
@@ -152,16 +152,16 @@ void CarDodgeCore::MoveUserCarLeft() {
 
 // MoveUserCarRight
 void CarDodgeCore::MoveUserCarRight() {
-	// Check if user car is already at the right border
-	if (UserCar.bottomRight.X >= nScreenWidth - nRightBorderWidth) {
+	// Check if user car is already at the right border, with respect to car turning speed
+	if (UserCar.bottomRight.X + nCarDodgeCarTurningSpeed >= nScreenWidth - nRightBorderWidth) {
 		return;
 	}
 
 	EraseCar(UserCar);
 
-	// Move car right by 2
-	UserCar.bottomLeft.X += 2;
-	UserCar.bottomRight.X += 2;
+	// Move car right by nCarDodgeCarTurningSpeed
+	UserCar.bottomLeft.X += nCarDodgeCarTurningSpeed;
+	UserCar.bottomRight.X += nCarDodgeCarTurningSpeed;
 
 	RenderCar(UserCar);
 
@@ -183,7 +183,7 @@ void CarDodgeCore::RenderNewEnemyCar() {
 	// Set co-ords of this enemy car (the enemy car Y co-ordinate can be used as an identifier)
 	EnemyCars[nEnemyCarIndex].bInUse = true;
 	EnemyCars[nEnemyCarIndex].bottomLeft = { nRandomXCoord, 3 };
-	nRandomXCoord += 4;
+	nRandomXCoord += 3;
 	EnemyCars[nEnemyCarIndex].bottomRight = { nRandomXCoord, 3 };
 
 	// Render the new car now
@@ -191,6 +191,8 @@ void CarDodgeCore::RenderNewEnemyCar() {
 
 	// Finally, increment the number of currently rendered enemy cars
 	nNumOfCurrentRenderedEnemyCars++;
+
+	return;
 }
 
 // MoveAllEnemyCars
@@ -244,7 +246,7 @@ bool CarDodgeCore::CheckForCarCollision() {
 		// Check if car is in the necessary Y-coordinates to be in a crash
 		if (EnemyCars[nEnemyCarIterator].bottomLeft.Y >= nSessionConsoleHeight - 3) {
 			// Check if car is in the necessary X-coordinates to be in a crash
-			if (EnemyCars[nEnemyCarIterator].bottomLeft.X < UserCar.bottomRight.X && EnemyCars[nEnemyCarIterator].bottomRight.X > UserCar.bottomLeft.X) {
+			if (EnemyCars[nEnemyCarIterator].bottomLeft.X <= UserCar.bottomRight.X && EnemyCars[nEnemyCarIterator].bottomRight.X >= UserCar.bottomLeft.X) {
 				return true;
 			}
 		}

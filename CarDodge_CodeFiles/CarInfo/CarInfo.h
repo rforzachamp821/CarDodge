@@ -6,6 +6,8 @@
 #include <array>
 #include <Windows.h>
 
+extern int nCarDodgeCarTurningSpeed;
+
 // CarInfo - Structure that defines the attributes a car should have.
 struct CarInfo {
 

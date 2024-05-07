@@ -2,12 +2,11 @@
 // CarDodgeMain.cpp - Houses the CarDodgeMain class functions.
 //
 #include "CarDodgeMain.h"
-#include "../../CarDodge_Definitions/ZTConstDefinitions.h"
-#include "../../CarDodge_Definitions/ZTFormattingDefinitions.h"
 #include "../../CarDodge_Definitions/ZeeTerminalCore.h"
+#include "../../CarDodge_Definitions/ZTFormattingDefinitions.h"
 #include "../CarDodgeCore/CarDodgeCore.h"
 #include "../CarInfo/CarInfo.h"
-#include "../OptionSelectEngine.cpp"
+#include "../OptionSelectEngine/OptionSelectEngine.h"
 #include <conio.h>
 
 extern short int nSessionConsoleHeight;
@@ -88,7 +87,6 @@ bool CarDodgeMain::DisplayUserLossScreen() {
 	SetCursorPosition(nLeftBorderWidth, 5);
 	colour(WHT, RED);
 	std::cout << ULINE_STR << CentreTextCarDodge("You crashed!") << std::string((nGameplayScreenWidth - 12) / 2, ' ') << NOULINE_STR;
-	colour(sColourGlobal, RED);
 
 	//                           //
 	// Display other stats \/ \/ //
@@ -98,26 +96,26 @@ bool CarDodgeMain::DisplayUserLossScreen() {
 	std::cout << CentreTextCarDodge("Elapsed Time: ", 22 + std::to_string(nSessionTime.count()).length());
 	colour(BLU, RED);
 	std::cout << std::to_string(nSessionTime.count()) << " seconds";
-	colour(sColourGlobal, RED);
+	colour(WHT, RED);
 
 	SetCursorPosition(nLeftBorderWidth, 8);
 	std::cout << CentreTextCarDodge("Final Score: ", 13 + std::to_string(nSessionPoints).length() + std::string(nSessionPoints > GetCurrentHighScore() ? " (-- NEW HIGH SCORE --)" : "").length());
 	colour(BLU, RED);
 	std::cout << std::to_string(nSessionPoints);
 	RandomColourOutput(std::string(nSessionPoints > GetCurrentHighScore() ? " (-- NEW HIGH SCORE --)" : ""), RED);
-	colour(sColourGlobal, RED);
+	colour(WHT, RED);
 
 	SetCursorPosition(nLeftBorderWidth, 9);
 	std::cout << CentreTextCarDodge("Final Level: ", 13 + std::to_string(nSessionLevel).length() + std::string(nSessionLevel == 12 ? " (OMEGA Level)" : "").length());
 	colour(BLU, RED);
 	std::cout << std::to_string(nSessionLevel) + std::string(nSessionLevel == 12 ? " (OMEGA Level)" : "");
-	colour(sColourGlobal, RED);
+	colour(WHT, RED);
 
 	SetCursorPosition(nLeftBorderWidth, 10);
 	std::cout << CentreTextCarDodge("Final Interval Period: ", 25 + std::to_string(nSessionEnemyCarInterval.count()).length());
 	colour(BLU, RED);
 	std::cout << std::to_string(nSessionEnemyCarInterval.count()) + "ms";
-	colour(sColourGlobal, RED);
+	colour(WHT, RED);
 
 	// Restart on ENTER, exit on ESC, don't do anything on any other input
 	SetCursorPosition(nLeftBorderWidth, 14);
@@ -327,13 +325,9 @@ void CarDodgeMain::CarDodgeMainGame()
 	bool bRestartGame = false; // Flag for restarting game (usually on game loss)
 
 	// Ensure that all cursor and colour settings are saved before game initialisation
-	bool bShowCursorPrevious = bShowCursor;
-	std::string sColourGlobalPrevFore = sColourGlobal;
-	std::string sColourGlobalPrevBack = sColourGlobalBack;
-
-	// Set cursor attributes and hide cursor to prevent flickering
-	bShowCursor = false;
-	SetCursorAttributes();
+	const bool bShowCursorPrevious = DisableCursorVisibility();	// Set cursor attributes and hide cursor to prevent flickering
+	const std::string sColourGlobalPrevFore = sColourGlobal;
+	const std::string sColourGlobalPrevBack = sColourGlobalBack;
 
 	// Set global colours to game colours
 	sColourGlobal = LWHT;
@@ -382,7 +376,7 @@ void CarDodgeMain::CarDodgeMainGame()
 
 		// Render user car, set user car start position
 		UserCar.bottomLeft = { 43, nSessionConsoleHeight };
-		UserCar.bottomRight = { 47, nSessionConsoleHeight };
+		UserCar.bottomRight = { 46, nSessionConsoleHeight };
 		RenderCar(UserCar);
 
 		// Set up enemy car intervals, session levels
@@ -630,7 +624,9 @@ void CarDodgeMain::CarDodgeMainGame()
 		// SetHighScore sets the high score automatically - we don't need logic as to if the current score is higher than the high score, as that's already in there
 		SetHighScore(nSessionPoints);
 		// Update the high score in the High Score file
+		bShowCursor = bShowCursorPrevious;
 		UpdateHighScoreInFile();
+		DisableCursorVisibility();
 
 		// Reset the game before leaving or before restart, in case object is not discarded
 		ResetGame();

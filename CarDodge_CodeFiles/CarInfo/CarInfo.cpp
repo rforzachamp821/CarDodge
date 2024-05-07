@@ -3,3 +3,5 @@
 //
 
 #include "CarInfo.h"
+
+int nCarDodgeCarTurningSpeed = 2;

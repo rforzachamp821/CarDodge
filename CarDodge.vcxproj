@@ -140,6 +140,7 @@
     <ClCompile Include="CarDodge_CodeFiles\CarDodgeCore\CarDodgeCore.cpp" />
     <ClCompile Include="CarDodge_CodeFiles\CarDodgeMain\CarDodgeMain.cpp" />
     <ClCompile Include="CarDodge_CodeFiles\CarInfo\CarInfo.cpp" />
+    <ClCompile Include="CarDodge_CodeFiles\OptionSelectEngine\OptionSelectEngine.cpp" />
     <ClCompile Include="CarDodge_Definitions\ColourConv.cpp" />
     <ClCompile Include="CarDodge_Definitions\ZeeTerminalCore.cpp" />
   </ItemGroup>
@@ -148,6 +149,7 @@
     <ClInclude Include="CarDodge_CodeFiles\CarDodgeCore\CarDodgeCore.h" />
     <ClInclude Include="CarDodge_CodeFiles\CarDodgeMain\CarDodgeMain.h" />
     <ClInclude Include="CarDodge_CodeFiles\CarInfo\CarInfo.h" />
+    <ClInclude Include="CarDodge_CodeFiles\OptionSelectEngine\OptionSelectEngine.h" />
     <ClInclude Include="CarDodge_Definitions\Definitions.h" />
     <ClInclude Include="CarDodge_Definitions\ZeeTerminalCore.h" />
     <ClInclude Include="CarDodge_Definitions\ZeeTerminalCoreLib.h" />

@@ -36,6 +36,9 @@
     <ClCompile Include="CarDodge_Definitions\ColourConv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CarDodge_CodeFiles\OptionSelectEngine\OptionSelectEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CarDodge_Definitions\Definitions.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CarDodge_Definitions\ZeeTerminalCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CarDodge_CodeFiles\OptionSelectEngine\OptionSelectEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
