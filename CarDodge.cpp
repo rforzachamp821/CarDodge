@@ -112,7 +112,7 @@ void InitialiseCarDodge()
 	UserCar.CarStyle = Style.UserCarDefault;
 
 	// Set window title
-	SetWindowTitle("Car Dodge v0.6.0");
+	SetWindowTitle("Car Dodge v0.5.2");
 
 	// Menu screen colours
 	colour(sMenuColourFore, sMenuColourBack);
