@@ -1,3 +1,5 @@
+***NOTE: This project is set to merge with the ZeeTerminal Commandline Program project (and at the time of reading, updates to the game may already be streaming to the project), and therefore this repository is now archived. If you would like to witness the development of this game, updates to it will be streamed through the project and release notes of the command-line interpreter will contain all the advancements in the game. You can go to the project's repository through this link: https://github.com/rforzachamp821/ZeeTerminal-CommandLine-Program***
+
 # CarDodge
 A fun little terminal-based car-dodging game made for Windows, and based on the ZeeTerminal core libraries.
 
@@ -21,7 +23,7 @@ CarDodge requires a 120x30 cell terminal window to run. Anything less than that,
 
 CarDodge should work on any terminal to run this game, provided it's running under Windows, supports the WIN32 Console API, and optionally supports ANSI VT Sequences.
 
-Windows 11 and 10 are supported, both on the Windows Terminal OpenConsole.exe and ConHost.exe. The game should work under Windows 8.1, 8 and 7, however support is under a lower priority.
+Windows 11 and 10 are supported, both on the Windows Terminal OpenConsole.exe and ConHost.exe. The game *should* work under Windows 8.1, 8 and 7, however support is under a lower priority.
 
 ## Screenshots
 
